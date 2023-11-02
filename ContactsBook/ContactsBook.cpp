@@ -1,10 +1,14 @@
-// ContactsBook.cpp : Defines the entry point for the application.
+﻿// ContactsBook.cpp : Defines the entry point for the application.
 //
 
 #include "framework.h"
 #include "ContactsBook.h"
 
 #define MAX_LOADSTRING 100
+
+HWND hList1, hList2;
+HWND hEdit1, hEdit2, hEdit3, hEdit4;
+HWND hButton1, hButton2, hButton4, hButton5;
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
@@ -151,6 +155,28 @@ INT_PTR CALLBACK DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_INITDIALOG:
+        {
+            // 1 - Привязка дескрипторів
+            hList1 = GetDlgItem(hDlg, IDC_LIST1);
+            hList2 = GetDlgItem(hDlg, IDC_LIST2);
+            // ->
+            hEdit1 = GetDlgItem(hDlg, IDC_EDIT1);
+            hEdit2 = GetDlgItem(hDlg, IDC_EDIT2);
+            hEdit3 = GetDlgItem(hDlg, IDC_EDIT3);
+            hEdit4 = GetDlgItem(hDlg, IDC_EDIT4);
+            // ->
+            hButton1 = GetDlgItem(hDlg, IDC_BUTTON1);
+            hButton2 = GetDlgItem(hDlg, IDC_BUTTON2);
+            hButton4 = GetDlgItem(hDlg, IDC_BUTTON4);
+            hButton5 = GetDlgItem(hDlg, IDC_BUTTON5);
+
+            // 2 - Заповненя списку груп контактів:
+            SendMessage(hList1, LB_ADDSTRING, 0, LPARAM(L"Work Contacts"));
+            SendMessage(hList1, LB_ADDSTRING, 0, LPARAM(L"Femeli Contacts"));
+            SendMessage(hList1, LB_ADDSTRING, 0, LPARAM(L"My Contacts"));
+            SendMessage(hList1, LB_ADDSTRING, 0, LPARAM(L"Frend Contacts"));
+            SendMessage(hList1, LB_ADDSTRING, 0, LPARAM(L"Some Contacts"));
+        }
         return (INT_PTR)TRUE;
 
     case WM_COMMAND:
