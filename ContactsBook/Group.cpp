@@ -1,11 +1,11 @@
 #include "framework.h"
 #include "Group.h"
 
-Group::Group()
+Group::Group() : name("undefined"), size(0), count(0)
 {
 }
 
-Group::Group(std::string name, int size)
+Group::Group(std::string name, int size) : name(name), size(size)
 {
 }
 
